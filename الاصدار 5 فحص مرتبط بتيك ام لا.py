@@ -290,23 +290,14 @@ def start_bot(bot_token):
     bot.infinity_polling()
 
 
-# Password Check and Bot Initialization
-pss = input(' 丕賰鬲亘 賱乇賲夭 : ')
-if pss == KBS:
-    print(' 鉁呚地 ')
-    time.sleep(1)
-    os.system('clear')
 
-    # Get bot token from user
-    BOT_TOKEN = input('Enter Bot Token: ')
 
-    os.system('clear')
+   # Get bot token from environment variable
+token = os.getenv("BOT_TOKEN")
 
-    try:
-        start_bot(BOT_TOKEN)  # Initialize and start the bot with the entered token
+os.system('clear')
 
-    except Exception as e:
-        print(f"Error initializing bot: {e}")
-
-else:
-    exit(' 睾賱胤 ')
+try:
+    start_bot(token)  # استخدم المتغير الصحيح اللي فيه التوكن
+except Exception as e:
+    print(f"Error initializing bot: {e}")
